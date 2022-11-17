@@ -104,6 +104,7 @@ function App() {
     <div className="container">
       <h1>
         /{">"}
+        <Cursor value={cursor} />
         <Query value={query} />
         <Input value={input} />
         <Options value={options} />
