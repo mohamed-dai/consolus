@@ -1,8 +1,10 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
+import Cursor from "./Cursor";
 import Query from "./Query";
 import Input from "./Input";
 import Options from "./Options";
+import Data from "./Data";
 
 function App() {
   useEffect(() => {
@@ -20,6 +22,7 @@ function App() {
   const [options, setOptions] = useState();
   const [input, setInput] = useState();
   const [query, setQuery] = useState();
+  const [cursor, setCursor] = useState();
 
   function handleKeyDown(event) {
     console.log("A key was pressed: ", event);
@@ -32,7 +35,7 @@ function App() {
   }
 
   function getListInfos() {
-    return [];
+    return Object.keys(Data);
   }
 
   function showListFields() {
@@ -41,7 +44,7 @@ function App() {
   }
 
   function getListFields(info) {
-    return [];
+    return Object.keys(Data[info]);
   }
 
   function showListValues() {
@@ -49,7 +52,7 @@ function App() {
     setOptions(items);
   }
   function getListValues(info, field) {
-    return [];
+    return Object.keys(Data[info][field]);
   }
 
   function doBackspace() {}
@@ -100,7 +103,8 @@ function App() {
   return (
     <div className="container">
       <h1>
-        /{">"} <Query value={query} />
+        /{">"}
+        <Query value={query} />
         <Input value={input} />
         <Options value={options} />
       </h1>
