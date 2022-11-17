@@ -1,4 +1,8 @@
+import "./styles.css";
 import React, { useState, useEffect } from "react";
+import Query from "./Query";
+import Input from "./Input";
+import Options from "./Options";
 
 function App() {
   useEffect(() => {
@@ -14,6 +18,8 @@ function App() {
   const [field, setField] = useState();
   const [value, setValue] = useState();
   const [options, setOptions] = useState();
+  const [input, setInput] = useState();
+  const [query, setQuery] = useState();
 
   function handleKeyDown(event) {
     console.log("A key was pressed: ", event);
@@ -93,7 +99,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Welcome to the Keydown Listening Component</h1>
+      <h1>
+        /{">"} <Query value={query} />
+        <Input value={input} />
+        <Options value={options} />
+      </h1>
     </div>
   );
 }

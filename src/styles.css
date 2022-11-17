@@ -1,4 +1,8 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+.container {
+  font-family: 'Courier New', monospace;
+  /* text-align: center; */
+}
+
+.Query, .Input, .Options {
+  margin: 0px 5px;
 }
