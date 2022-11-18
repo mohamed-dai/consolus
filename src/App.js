@@ -1,6 +1,6 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
-import Cursor from "./Cursor";
+import Pipe from "./Pipe";
 import Query from "./Query";
 import Input from "./Input";
 import Options from "./Options";
@@ -22,7 +22,7 @@ function App() {
   const [options, setOptions] = useState();
   const [input, setInput] = useState();
   const [query, setQuery] = useState();
-  const [cursor, setCursor] = useState();
+  const [pipe, setPipe] = useState();
 
   function handleKeyDown(event) {
     console.log("A key was pressed: ", event);
@@ -104,7 +104,7 @@ function App() {
     <div className="container">
       <h1>
         /{">"}
-        <Cursor value={cursor} />
+        <Pipe value={pipe} />
         <Query value={query} />
         <Input value={input} />
         <Options value={options} />
