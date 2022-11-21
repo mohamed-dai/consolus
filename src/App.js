@@ -20,12 +20,57 @@ function App() {
   const [field, setField] = useState();
   const [value, setValue] = useState();
   const [options, setOptions] = useState();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState(0);
   const [query, setQuery] = useState();
   const [pipe, setPipe] = useState();
 
+  return (
+    <div className="container">
+      <h1>
+        /{">"}
+        <Query value={query} />
+        <Input value={input} />
+        <Pipe value={pipe} />
+        <Options value={options} />
+      </h1>
+    </div>
+  );
+
+  function keySwitcher(key) {
+    switch (key) {
+      case "@":
+        showListInfos();
+        break;
+      case "?":
+        showListFields();
+        break;
+      case "=":
+        showListValues();
+        break;
+      case "Backspace":
+        doBackspace();
+        break;
+      case "Delete":
+        doDelete();
+        break;
+      case "ArrowLeft":
+        moveLeft();
+        break;
+      case "ArrowRight":
+        moveRight();
+        break;
+      case "Enter":
+        acceptItem();
+        break;
+      case " ":
+        break;
+      default:
+        acceptKey(key);
+    }
+  }
+
   function handleKeyDown(event) {
-    console.log("A key was pressed: ", event);
+    // console.log("A key was pressed: ", event);
     keySwitcher(event.key);
   }
 
@@ -65,52 +110,14 @@ function App() {
 
   function acceptItem() {}
 
-  function acceptKey() {}
-
-  function keySwitcher(key) {
-    switch (key) {
-      case "@":
-        showListInfos();
-        break;
-      case "?":
-        showListFields();
-        break;
-      case "=":
-        showListValues();
-        break;
-      case "Backspace":
-        doBackspace();
-        break;
-      case "Delete":
-        doDelete();
-        break;
-      case "ArrowLeft":
-        moveLeft();
-        break;
-      case "ArrowRight":
-        moveRight();
-        break;
-      case "Enter":
-        acceptItem();
-        break;
-      case " ":
-        break;
-      default:
-        acceptKey();
+  function acceptKey(key) {
+    if (key.length == 1) {
+      console.log("input", input);
+      // const newInput = input != undefined ? input + 1 : 1;
+      // console.log("newInput", newInput);
+      setInput(input + 1);
     }
   }
-
-  return (
-    <div className="container">
-      <h1>
-        /{">"}
-        <Pipe value={pipe} />
-        <Query value={query} />
-        <Input value={input} />
-        <Options value={options} />
-      </h1>
-    </div>
-  );
 }
 
 export default App;
