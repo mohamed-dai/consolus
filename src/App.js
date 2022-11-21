@@ -20,7 +20,7 @@ function App() {
   const [field, setField] = useState();
   const [value, setValue] = useState();
   const [options, setOptions] = useState();
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState();
   const [query, setQuery] = useState();
   const [pipe, setPipe] = useState();
 
@@ -112,10 +112,10 @@ function App() {
 
   function acceptKey(key) {
     if (key.length == 1) {
-      console.log("input", input);
-      // const newInput = input != undefined ? input + 1 : 1;
+      // console.log("input", input);
+      // const newInput = input != undefined ? input + key : key;
       // console.log("newInput", newInput);
-      setInput(input + 1);
+      setInput((input) => (input != undefined ? input + key : key));
     }
   }
 }
