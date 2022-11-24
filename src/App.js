@@ -37,6 +37,7 @@ function App() {
   );
 
   function keySwitcher(key) {
+    acceptKey(key);
     switch (key) {
       case "@":
         showListInfos();
@@ -64,13 +65,11 @@ function App() {
         break;
       case " ":
         break;
-      default:
-        acceptKey(key);
     }
   }
 
   function handleKeyDown(event) {
-    // console.log("A key was pressed: ", event);
+    console.log("A key was pressed: ", event.key);
     keySwitcher(event.key);
   }
 
