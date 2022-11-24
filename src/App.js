@@ -100,7 +100,9 @@ function App() {
     return Object.keys(Data[info][field]);
   }
 
-  function doBackspace() {}
+  function doBackspace() {
+    setInput((input) => input.substring(0, input.length - 1));
+  }
 
   function doDelete() {}
 
@@ -112,9 +114,6 @@ function App() {
 
   function acceptKey(key) {
     if (key.length == 1) {
-      // console.log("input", input);
-      // const newInput = input != undefined ? input + key : key;
-      // console.log("newInput", newInput);
       setInput((input) => (input != undefined ? input + key : key));
     }
   }
