@@ -1,4 +1,4 @@
-export default function Data() {
+export default function getData() {
   return {
     infoA: {
       fieldA1: { valA1x: {}, valA1xy: {}, valA1xyz: {} },

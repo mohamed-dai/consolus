@@ -3,8 +3,13 @@
   /* text-align: center; */
 }
 
-.Query, .Input, .Options {
+.Query, .Input, .Options, .Option {
   margin: 0px 5px;
+}
+
+.Option {
+  background-color: aliceblue;
+  border: 1px solid grey;
 }
 
 .Pipe{
