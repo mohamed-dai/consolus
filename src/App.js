@@ -10,31 +10,28 @@ function App() {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
-    // cleanup this component
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
-  const [info, setInfo] = useState();
-  const [field, setField] = useState();
-  const [value, setValue] = useState();
   const [allOptions, setAllOptions] = useState([]);
   const [options, setOptions] = useState([]);
   const [input, setInput] = useState();
   const [query, setQuery] = useState();
+  const [info, setInfo] = useState();
+  const [field, setField] = useState();
+  const [value, setValue] = useState();
   const [pipe, setPipe] = useState();
   const Data = getData();
 
   return (
     <div className="container">
-      <h1>
-        /{">"}
-        <Query value={query} />
-        <Input value={input} />
-        <Pipe value={pipe} />
-        <Options value={options} />
-      </h1>
+      /{">"}
+      <Query value={query} />
+      <Input value={input} />
+      <Pipe value={pipe} />
+      <Options value={options} />
     </div>
   );
 
@@ -52,7 +49,6 @@ function App() {
         break;
       case "Backspace":
         doBackspace();
-        // filterOptions();
         break;
       case "Delete":
         doDelete();
@@ -74,19 +70,19 @@ function App() {
   }
 
   function handleKeyDown(event) {
-    console.log("A key was pressed: ", event.key);
+    // console.log("A key was pressed: ", event.key);
     keySwitcher(event.key);
   }
 
   function showListInfos() {
     const items = getListInfos();
-    console.log("showListInfos", items);
+    // console.log("showListInfos", items);
     setOptions(items);
     setAllOptions(items);
   }
 
   function getListInfos() {
-    console.log("Data", Data);
+    // console.log("Data", Data);
     return Object.keys(Data);
   }
 
@@ -97,6 +93,7 @@ function App() {
   }
 
   function getListFields(info) {
+    console.log("getListFields", info);
     return Object.keys(Data[info]);
   }
 
@@ -123,7 +120,33 @@ function App() {
 
   function moveRight() {}
 
-  function acceptItem() {}
+  function acceptItem() {
+    let currentInput;
+    setInput((input) => {
+      console.log("setInput");
+      currentInput = input;
+      return "";
+    });
+
+    setQuery((query) => {
+      console.log("setQuery");
+      return query != undefined ? query + " " + currentInput : currentInput;
+    });
+    setOptions([]);
+    setAllOptions([]);
+    setInfo((info) => {
+      console.log("setInfo");
+      return currentInput.startsWith("@") ? currentInput.substring(1) : "";
+    });
+    setField((field) => {
+      console.log("setField");
+      currentInput.startsWith("?") ? currentInput.substring(1) : "";
+    });
+    setValue((value) => {
+      console.log("setValue");
+      currentInput.startsWith("=") ? currentInput.substring(1) : "";
+    });
+  }
 
   function acceptKey(key) {
     if (key.length == 1) {
@@ -140,20 +163,17 @@ function App() {
   }
 
   function filterOptions(input) {
-    // setInput((input) => {
-
     setAllOptions((allOptions) => {
-      // console.log("allOptions", allOptions);
       setOptions((options) =>
         allOptions.filter(function (option) {
-          return option.startsWith(input.substring(1));
+          return (
+            option.startsWith(input.substring(1)) &&
+            option != input.substring(1)
+          );
         })
       );
       return allOptions;
     });
-
-    // return input;
-    // });
   }
 }
 

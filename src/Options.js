@@ -2,9 +2,9 @@ import "./styles.css";
 
 export default function Options(props) {
   const listItems = props.value.map((option, index) => (
-    <span key={index} className="Option aa">
+    <button key={index} className="Optionx">
       {option}
-    </span>
+    </button>
   ));
   return <span className="Options">{listItems}</span>;
 }

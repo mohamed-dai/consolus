@@ -1,9 +1,17 @@
 .container {
-  font-family: 'Courier New', monospace;
+  /* font-family: "Courier New", monospace; */
   /* text-align: center; */
 }
 
-.Query, .Input, .Options, .Option {
+body,
+button {
+  font-family: "Courier New", monospace;
+  font-size: xx-large;
+}
+
+.Query,
+.Options,
+.Option {
   margin: 0px 5px;
 }
 
@@ -12,13 +20,23 @@
   border: 1px solid grey;
 }
 
-.Pipe{
-    animation:blinkingText 1.2s infinite;
+.Pipe {
+  animation: blinkingText 1.2s infinite;
 }
-@keyframes blinkingText{
-    0%{     color: #000;    }
-    49%{    color: #000; }
-    60%{    color: transparent; }
-    99%{    color:transparent;  }
-    100%{   color: #000;    }
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
 }
